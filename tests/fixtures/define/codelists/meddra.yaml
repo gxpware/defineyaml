@@ -1,0 +1,6 @@
+name: "MEDDRA"                            # -> CL.MEDDRA
+label: MedDRA
+type: text
+external:
+  dictionary: MedDRA
+  version: "26.1"

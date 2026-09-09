@@ -1,0 +1,17 @@
+name: "AESEV"
+label: Severity/Intensity Scale for Adverse Events
+type: text
+terms:
+- code: "MILD"
+  nci_code: "C41338"
+  decode: Mild Adverse Event
+  rank: 1
+- code: "MODERATE"
+  nci_code: "C41339"
+  decode: Moderate Adverse Event
+  rank: 2
+- code: "SEVERE"
+  nci_code: "C41340"
+  decode: Severe Adverse Event
+  rank: 3
+nci_code: "C66769"

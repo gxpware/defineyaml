@@ -1,0 +1,42 @@
+name: "Table 14.2.1"                      # -> RD.T14.2.1
+title: Change from Baseline in ALT at Week 24 - Primary Efficacy
+document:
+  ref: t14-2-1                            # leaf from documents.yaml
+  pages: {first: 112, last: 114}
+
+results:
+- name: "ANCOVA"                          # -> AR.T14.2.1.ANCOVA
+  description: |
+    ANCOVA of change from baseline in ALT at Week 24, with treatment as a
+    fixed effect and baseline ALT as a covariate. Safety population.
+  parameter: ADLB.PARAMCD                 # -> ParameterOID = IT.ADLB.PARAMCD
+  reason: SPECIFIED IN PROTOCOL
+  purpose: PRIMARY OUTCOME MEASURE
+  datasets:
+  - dataset: ADLB
+    where: alt-week24
+    variables:
+    - AVAL
+    - BASE
+    - CHG
+    - TRTPN
+  - dataset: ADSL
+    variables:
+    - SAFFL
+  join_comment: join-adsl-adlb            # required whenever >1 dataset
+  documentation:
+    description: See SAP section 9.2.
+    document: {ref: sap, pages: {first: 45, last: 46}}
+  programming_code:
+    context: SAS 9.4
+    code: |
+      proc mixed data=adlb;
+        class trtpn;
+        model chg = trtpn base / ddfm=kr;
+      run;
+- name: "Table 15.3"
+  description: Mixed random results
+  reason: SPECIFIED IN SAP
+  purpose: EXPLORATORY OUTCOME MEASURE
+  datasets: []
+  parameter: ADLB.PARAM

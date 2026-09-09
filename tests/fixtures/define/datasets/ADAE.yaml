@@ -1,0 +1,49 @@
+name: "ADAE"
+label: AE Analysis Dataset
+class: A
+structure: ssdf
+variables:
+- name: "STUDYID"
+  label: Study Identifier
+  type: text
+  length: 12
+  mandatory: true
+  origin:
+    type: Predecessor
+    source: ADSL.STUDYID
+- name: "USUBJID"
+  label: Unique Subject Identifier
+  type: text
+  length: 20
+  mandatory: true
+  origin:
+    type: Predecessor
+    source: ADSL.USUBJID
+  comment: adsl/usubjid
+- name: "SAFFL"
+  label: Safety Population Flag
+  type: text
+  length: 1
+  mandatory: true
+  codelist: ny
+  origin:
+    type: Predecessor
+    source: ADSL.SAFFL
+- name: "AEDECOD"
+  label: Decoded term
+  type: text
+  mandatory: false
+  codelist: meddra
+  origin:
+    type: Assigned
+    data_source: Sponsor
+    document:
+purpose: Analysis
+repeating: false
+keys:
+- STUDYID
+- USUBJID
+- AESTDTC
+- AEENDTC
+leaf:
+  href: adae.xpt

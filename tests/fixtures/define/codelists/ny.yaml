@@ -1,0 +1,12 @@
+name: "NY"                                # -> CL.NY
+label: No Yes Response
+type: text
+nci_code: "C66742"
+extended: false
+terms:
+- code: "N"
+  decode: "No"
+  nci_code: "C49487"
+- code: "Y"
+  decode: "Yes"
+  nci_code: "C49488"

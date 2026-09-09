@@ -1,0 +1,17 @@
+name: "Treatment Start Date"
+type: Computation
+description: |-
+  Date part of the earliest non-missing EXSTDTC in EX where EXDOSE > 0, converted to a numeric SAS date. Subjects with no qualifying exposure record have TRTSDT set to missing.
+
+  Partial dates are not imputed; see ADRG s4.1.
+expressions:
+- context: SAS 9.4
+  code: |
+    trtsdt = datepart(min(of _exstdtc[*]));
+    if trtsdt = . then call missing(trtsdt);
+- context: R
+  code: |
+    trtsdt <- ex |>
+      dplyr::filter(EXDOSE > 0, !is.na(EXSTDTC)) |>
+      dplyr::pull(EXSTDTC) |>
+      min(na.rm = TRUE)

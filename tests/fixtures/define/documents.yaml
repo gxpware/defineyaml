@@ -1,0 +1,20 @@
+documents:
+- name: "acrf"
+  href: acrf.pdf
+  title: Annotated Case Report Form
+- name: "adrg"
+  href: adrg.pdf
+  title: Analysis Data Reviewer's Guide
+- name: "sap"
+  href: sap.pdf
+  title: Statistical Analysis Plan
+- name: "t14-2-1"
+  href: t-14-02-01.pdf
+  title: Table 14.2.1
+- name: "protocol"
+  href: 'protocol.pdf'
+  title: 'Protocol'
+annotated_crf:
+- acrf
+supplemental_docs:
+- adrg

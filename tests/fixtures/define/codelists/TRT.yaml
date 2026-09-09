@@ -1,0 +1,7 @@
+name: "treatment"
+label: 'Treatments'
+type: text
+terms:
+- code: "PBO"
+  decode: Placebo
+extended: false

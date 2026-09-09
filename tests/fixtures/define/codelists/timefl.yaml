@@ -1,0 +1,14 @@
+name: "TIMEFL"
+label: Time Imputation Flag
+type: text
+terms:
+- code: "H"
+  nci_code: "C81213"
+  decode: Hours Minutes Seconds Imputed
+- code: "M"
+  nci_code: "C81214"
+  decode: Minutes Seconds Imputed
+- code: "S"
+  nci_code: "C81215"
+  decode: Seconds Imputed
+nci_code: "C81226"

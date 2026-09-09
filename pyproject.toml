@@ -1,0 +1,53 @@
+[project]
+name = "defineyaml"
+dynamic = ["version"]                     # derived from the latest git tag by hatch-vcs
+description = "define.xml v2.1 editor - Define, But in YAML (Yet Another Metadata Liability)"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Tomas Demčenko" }]
+dependencies = [
+    "ruamel.yaml>=0.18",
+    "pydantic>=2.6",
+    "lxml>=5.0",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pyinstaller>=6.0",
+]
+ui = [
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+    "duckdb>=1.0",
+]
+
+[project.scripts]
+define = "defineyaml.cli:main"
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+# Version = the latest reachable git tag (v0.1.0 -> 0.1.0); commits past a tag get
+# a 0.1.1.devN+g<sha> suffix. Needs a full clone with tags (fetch-depth: 0 in CI).
+[tool.hatch.version]
+source = "vcs"
+
+# Written at build/install time so a frozen PyInstaller binary (no dist metadata)
+# can still read its version. Generated - git-ignored.
+[tool.hatch.build.hooks.vcs]
+version-file = "src/defineyaml/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/defineyaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.2",
+]

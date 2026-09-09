@@ -1,0 +1,9 @@
+name: "Lab aval"
+type: Computation
+expressions:
+- context: SAS 9.4
+  code: |
+    proc sort data=adlb;
+    by studyid usubjid;
+    run;
+description: Do good

@@ -1,0 +1,12 @@
+name: "SBJTSTAT"
+label: Subject Trial Status
+type: text
+terms:
+- code: "COMPLETED"
+  nci_code: "C25250"
+- code: "DISCONTINUED"
+  nci_code: "C25484"
+- code: "ONGOING"
+  nci_code: "C53279"
+nci_code: "C124296"
+extended: true

@@ -1,0 +1,20 @@
+name: "AGEU"
+label: Age Unit
+type: text
+terms:
+- code: "DAYS"
+  nci_code: "C25301"
+  decode: Day
+- code: "HOURS"
+  nci_code: "C25529"
+  decode: Hour
+- code: "MONTHS"
+  nci_code: "C29846"
+  decode: Month
+- code: "WEEKS"
+  nci_code: "C29844"
+  decode: Week
+- code: "YEARS"
+  nci_code: "C29848"
+  decode: Year
+nci_code: "C66781"

@@ -1,0 +1,17 @@
+name: "SEX"
+label: Sex
+type: text
+terms:
+- code: "F"
+  nci_code: "C16576"
+  decode: Female
+- code: "INTERSEX"
+  nci_code: "C45908"
+  decode: Intersex
+- code: "M"
+  nci_code: "C20197"
+  decode: Male
+- code: "U"
+  nci_code: "C17998"
+  decode: Unknown
+nci_code: "C66731"

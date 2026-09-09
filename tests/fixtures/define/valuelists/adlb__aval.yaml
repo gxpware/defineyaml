@@ -1,0 +1,12 @@
+dataset: ADLB                             # -> VL.ADLB.AVAL
+variable: AVAL
+entries:
+- name: "ALT"                              # -> IT.ADLB.AVAL.ALT
+  where: alt-week4                         # -> WC.ALT.WEEK4
+  item:
+    name: "AVAL"
+    label: Analysis Value (ALT, Week 4)
+    type: float
+    mandatory: false
+    origin: {type: Derived}
+    method: labaval

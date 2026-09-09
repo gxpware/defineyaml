@@ -1,0 +1,21 @@
+name: "ARMNULRS"
+label: Arm Null Reason
+type: text
+terms:
+- code: "ASSIGNED, NOT TREATED"
+  nci_code: "C142238"
+  decode: Subject Assigned to Arm But Not Treated
+- code: "NOT ASSIGNED"
+  nci_code: "C142239"
+  decode: Subject Not Assigned to Arm
+- code: "SCREEN FAILURE"
+  nci_code: "C49628"
+  decode: Trial Screen Failure
+- code: "SCREENING NOT COMPLETED"
+  nci_code: "C166074"
+  decode: Screening Not Completed
+- code: "UNPLANNED TREATMENT"
+  nci_code: "C142240"
+  decode: Subject Received Unplanned Treatment
+nci_code: "C142179"
+extended: true

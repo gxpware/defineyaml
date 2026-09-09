@@ -1,0 +1,58 @@
+# nfpm config - wraps the PyInstaller `define` binary into .deb / Arch / .apk.
+# https://nfpm.goreleaser.com/
+#
+# Driven by env vars set in .github/workflows/release.yml:
+#   VERSION  - e.g. 0.1.0 (the tag without the leading v)
+#   ARCH     - amd64 | arm64
+# and the binary must be staged at ./dist/define before `nfpm package` runs.
+
+name: defineyaml
+arch: "${ARCH}"
+platform: linux
+version: "${VERSION}"
+version_schema: none
+release: "1"
+section: utils
+priority: optional
+maintainer: "Tomas Demčenko <tomdem@protonmail.com>"
+vendor: "DefineYAML"
+homepage: "https://github.com/${GITHUB_REPOSITORY}"
+license: "MIT"
+description: |
+  define.xml v2.1 editor - Define, But in YAML.
+
+  Converts a Define-XML v2.1 submission to and from a tree of small YAML files
+  (one per codelist, method, comment, value list) so metadata version-controls,
+  diffs and merges the way source code does. Ships as a single self-contained
+  binary; no Python install required.
+
+# The binary bundles its own interpreter and every dependency, so there are no
+# package-level runtime dependencies to declare.
+contents:
+  - src: ./dist/define
+    dst: /usr/bin/define
+    file_info:
+      mode: 0755
+  - src: ./LICENSE
+    dst: /usr/share/licenses/defineyaml/LICENSE
+    packager: archlinux
+  - src: ./LICENSE
+    dst: /usr/share/doc/defineyaml/LICENSE
+    packager: deb
+  - src: ./LICENSE
+    dst: /usr/share/licenses/defineyaml/LICENSE
+    packager: apk
+  - src: ./README.md
+    dst: /usr/share/doc/defineyaml/README.md
+  - src: ./CLI.md
+    dst: /usr/share/doc/defineyaml/CLI.md
+  - src: ./XMLYAML.md
+    dst: /usr/share/doc/defineyaml/XMLYAML.md
+
+deb:
+  fields:
+    Bugs: "https://github.com/${GITHUB_REPOSITORY}/issues"
+
+archlinux:
+  packager: "Tomas Demčenko <tomdem@protonmail.com>"
+  pkgbase: defineyaml

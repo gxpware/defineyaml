@@ -1,0 +1,172 @@
+name: "DM"
+label: ''
+class: Special-Purpose
+structure: ''
+purpose: Tabulation
+standard: SDTMIG
+variables:
+- name: "STUDYID"
+  label: Study Identifier
+  type: text
+  mandatory: true
+  role: Identifier
+- name: "DOMAIN"
+  label: Domain Abbreviation
+  type: text
+  mandatory: true
+  role: Identifier
+- name: "USUBJID"
+  label: Unique Subject Identifier
+  type: text
+  mandatory: true
+  role: Identifier
+- name: "SUBJID"
+  label: Subject Identifier for the Study
+  type: text
+  mandatory: true
+  role: Topic
+- name: "RFSTDTC"
+  label: Subject Reference Start Date/Time
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFENDTC"
+  label: Subject Reference End Date/Time
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFXSTDTC"
+  label: Date/Time of First Study Treatment
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFXENDTC"
+  label: Date/Time of Last Study Treatment
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFCSTDTC"
+  label: Date/Time of First Challenge Agent Admin
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFCENDTC"
+  label: Date/Time of Last Challenge Agent Admin
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFICDTC"
+  label: Date/Time of Informed Consent
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "RFPENDTC"
+  label: Date/Time of End of Participation
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "DTHDTC"
+  label: Date/Time of Death
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "DTHFL"
+  label: Subject Death Flag
+  type: text
+  mandatory: false
+  role: Record Qualifier
+  codelist: ny
+- name: "SITEID"
+  label: Study Site Identifier
+  type: text
+  mandatory: true
+  role: Record Qualifier
+- name: "INVID"
+  label: Investigator Identifier
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "INVNAM"
+  label: Investigator Name
+  type: text
+  mandatory: false
+  role: Synonym Qualifier
+- name: "BRTHDTC"
+  label: Date/Time of Birth
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "AGE"
+  label: Age
+  type: integer
+  mandatory: false
+  role: Record Qualifier
+- name: "AGEU"
+  label: Age Units
+  type: text
+  mandatory: false
+  role: Variable Qualifier
+  codelist: ageu
+- name: "SEX"
+  label: Sex
+  type: text
+  mandatory: true
+  role: Record Qualifier
+  codelist: sex
+- name: "RACE"
+  label: Race
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "ETHNIC"
+  label: Ethnicity
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "ARMCD"
+  label: Planned Arm Code
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "ARM"
+  label: Description of Planned Arm
+  type: text
+  mandatory: false
+  role: Synonym Qualifier
+- name: "ACTARMCD"
+  label: Actual Arm Code
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "ACTARM"
+  label: Description of Actual Arm
+  type: text
+  mandatory: false
+  role: Synonym Qualifier
+- name: "ARMNRS"
+  label: Reason Arm and/or Actual Arm is Null
+  type: text
+  mandatory: false
+  role: Record Qualifier
+  codelist: armnulrs
+- name: "ACTARMUD"
+  label: Description of Unplanned Actual Arm
+  type: text
+  mandatory: false
+  role: Record Qualifier
+- name: "COUNTRY"
+  label: Country
+  type: text
+  mandatory: true
+  role: Record Qualifier
+- name: "DMDTC"
+  label: Date/Time of Collection
+  type: text
+  mandatory: false
+  role: Timing
+- name: "DMDY"
+  label: Study Day of Collection
+  type: integer
+  mandatory: false
+  role: Timing
+domain: DM

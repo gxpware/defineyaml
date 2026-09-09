@@ -1,0 +1,45 @@
+name: "ADCM"
+label: Conmed Analysis Dataset
+class: ''
+structure: ''
+variables:
+- name: "STUDYID"
+  label: ' This is a long label, this is a'
+  type: text
+  mandatory: true
+  origin:
+    type: Predecessor
+    source: CM.STUDYID
+  codelist:
+  role:
+- name: "USUBJID"
+  label: Unique Subject Identifier
+  type: text
+  length: 20
+  mandatory: true
+  origin:
+    type: Predecessor
+    source: ADSL.USUBJID
+  comment: adsl/usubjid
+  role:
+- name: "TRTSDT"
+  label: Date of First Exposure to Treatment
+  type: integer
+  display_format: DATE9.
+  mandatory: false
+  origin:
+    type: Predecessor
+    source: ADSL.TRTSDT
+  method: adsl/trtsdt
+  codelist:
+- name: "SAFFL"
+  label: Safety Population Flag
+  type: text
+  length: 1
+  mandatory: true
+  codelist: ny
+  origin:
+    type: Predecessor
+    source: ADSL.SAFFL
+leaf:
+  href: 'adcm.xpt'

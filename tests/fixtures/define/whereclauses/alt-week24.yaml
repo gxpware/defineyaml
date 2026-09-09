@@ -1,0 +1,9 @@
+conditions:
+- variable: ADLB.PARAMCD
+  comparator: EQ
+  values:
+  - ALT
+- variable: ADLB.AVISITN
+  comparator: EQ
+  values:
+  - '24'

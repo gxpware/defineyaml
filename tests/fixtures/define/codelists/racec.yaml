@@ -1,0 +1,435 @@
+name: "RACEC"
+label: Race As Collected
+type: text
+terms:
+- code: "ABORIGINAL AUSTRALIAN"
+  nci_code: "C154875"
+  decode: Aboriginal Australian
+- code: "AFGHAN"
+  nci_code: "C43874"
+  decode: Afghanistani
+- code: "AFRICAN AMERICAN"
+  nci_code: "C128937"
+  decode: African American
+- code: "AFRICAN CARIBBEAN"
+  nci_code: "C41226"
+  decode: African Caribbean
+- code: "AFRICAN"
+  nci_code: "C42331"
+  decode: African
+- code: "ALASKA NATIVE"
+  nci_code: "C18237"
+  decode: Alaska Native
+- code: "AMERICAN INDIAN OR ALASKA NATIVE"
+  nci_code: "C41259"
+  decode: American Indian or Alaska Native
+- code: "AMERICAN INDIAN"
+  nci_code: "C43877"
+  decode: American Indian
+- code: "ARAB"
+  nci_code: "C43876"
+  decode: Arab
+- code: "ARUBAN"
+  nci_code: "C209663"
+  decode: Aruban
+- code: "ASIAN AMERICAN"
+  nci_code: "C16310"
+  decode: Asian American
+- code: "ASIAN INDIAN"
+  nci_code: "C41262"
+  decode: Asian Indian
+- code: "ASIAN"
+  nci_code: "C41260"
+  decode: Asian
+- code: "BAHAMIAN"
+  nci_code: "C67271"
+  decode: Bahamian
+- code: "BANGLADESHI"
+  nci_code: "C43671"
+  decode: Bangladeshi
+- code: "BARBADIAN"
+  nci_code: "C43823"
+  decode: Barbadian
+- code: "BELIZEAN"
+  nci_code: "C209664"
+  decode: Belizean
+- code: "BERMUDAN"
+  nci_code: "C209665"
+  decode: Bermudan
+- code: "BHUTANESE"
+  nci_code: "C43673"
+  decode: Bhutanese
+- code: "BLACK CENTRAL AMERICAN"
+  nci_code: "C128991"
+  decode: Black Central American
+- code: "BLACK OR AFRICAN AMERICAN"
+  nci_code: "C16352"
+  decode: Black or African American
+- code: "BLACK SOUTH AFRICAN"
+  nci_code: "C209666"
+  decode: Black South African
+- code: "BLACK SOUTH AMERICAN"
+  nci_code: "C128992"
+  decode: Black South American
+- code: "BLACK"
+  nci_code: "C128938"
+  decode: Black
+- code: "BOTSWANAN"
+  nci_code: "C43830"
+  decode: Botswanan
+- code: "BRAZILIAN"
+  nci_code: "C209667"
+  decode: Brazilian
+- code: "BURMESE"
+  nci_code: "C43674"
+  decode: Burmese
+- code: "CABO VERDEAN"
+  nci_code: "C209668"
+  decode: Cabo Verdean
+- code: "CAMBODIAN"
+  nci_code: "C43399"
+  decode: Cambodian
+- code: "CANADIAN INDIAN"
+  nci_code: "C44949"
+  decode: Canadian Indian
+- code: "CARIBBEAN INDIAN"
+  nci_code: "C77810"
+  decode: Caribbean Indian
+- code: "CARIBBEAN"
+  nci_code: "C209448"
+  decode: Caribbean Race
+- code: "CAYMAN ISLANDER"
+  nci_code: "C209669"
+  decode: Cayman Islander
+- code: "CENTRAL AMERICAN INDIAN"
+  nci_code: "C44950"
+  decode: Central American Indian
+- code: "CENTRAL ASIAN"
+  nci_code: "C126534"
+  decode: Central Asian
+- code: "CHAMORRO"
+  nci_code: "C43403"
+  decode: Chamorran
+- code: "CHINESE"
+  nci_code: "C43391"
+  decode: Chinese
+- code: "CHUUKESE"
+  nci_code: "C43846"
+  decode: Chuukese
+- code: "COLOMBIAN"
+  nci_code: "C205488"
+  decode: Colombian
+- code: "COMORIAN"
+  nci_code: "C209670"
+  decode: Comorian
+- code: "CONGOLESE"
+  nci_code: "C205493"
+  decode: Congolese
+- code: "DOMINICA ISLANDER"
+  nci_code: "C43824"
+  decode: Dominica Islander
+- code: "DOMINICAN"
+  nci_code: "C67117"
+  decode: Dominican
+- code: "EAST ASIAN"
+  nci_code: "C161419"
+  decode: East Asian
+- code: "EASTERN EUROPEAN"
+  nci_code: "C77819"
+  decode: Eastern European
+- code: "EGYPTIAN"
+  nci_code: "C43868"
+  decode: Egyptian
+- code: "ENGLISH"
+  nci_code: "C43853"
+  decode: English
+- code: "ETHIOPIAN"
+  nci_code: "C43831"
+  decode: Ethiopian
+- code: "EUROPEAN"
+  nci_code: "C43851"
+  decode: European
+- code: "FIJIAN"
+  nci_code: "C43410"
+  decode: Fiji Islander
+- code: "FILIPINO"
+  nci_code: "C43393"
+  decode: Filipino
+- code: "FRENCH"
+  nci_code: "C43854"
+  decode: French
+- code: "GERMAN"
+  nci_code: "C43855"
+  decode: German
+- code: "GHANAIAN"
+  nci_code: "C205483"
+  decode: Ghanian
+- code: "GREENLAND INUIT"
+  nci_code: "C44265"
+  decode: Greenland Eskimo
+- code: "GUAMANIAN OR CHAMORRO"
+  nci_code: "C43837"
+  decode: Guamanian or Chamorro
+- code: "GUAMANIAN"
+  nci_code: "C43404"
+  decode: Guamanian
+- code: "GUATEMALAN"
+  nci_code: "C205486"
+  decode: Guatemalan
+- code: "GUYANESE"
+  nci_code: "C209671"
+  decode: Guyanese
+- code: "HAITIAN"
+  nci_code: "C43825"
+  decode: Haitian
+- code: "HISPANIC OR LATINO"
+  nci_code: "C17459"
+  decode: Hispanic or Latino
+- code: "HMONG"
+  nci_code: "C43398"
+  decode: Hmong
+- code: "HONDURAN"
+  nci_code: "C205487"
+  decode: Honduran
+- code: "INDONESIAN"
+  nci_code: "C43715"
+  decode: Indonesian
+- code: "INUPIAT INUIT"
+  nci_code: "C44268"
+  decode: Inupiat Eskimo
+- code: "IRANIAN"
+  nci_code: "C43869"
+  decode: Iranian
+- code: "IRAQI"
+  nci_code: "C43870"
+  decode: Iraqi
+- code: "IRISH"
+  nci_code: "C43856"
+  decode: Irish
+- code: "ISRAELI"
+  nci_code: "C43875"
+  decode: Israeli
+- code: "ITALIAN"
+  nci_code: "C43857"
+  decode: Italian
+- code: "IWO JIMAN"
+  nci_code: "C43718"
+  decode: Iwo Jiman
+- code: "JAMAICAN"
+  nci_code: "C43826"
+  decode: Jamaican
+- code: "JAPANESE"
+  nci_code: "C43392"
+  decode: Japanese
+- code: "KHOISAN"
+  nci_code: "C154874"
+  decode: Khoisan
+- code: "KOREAN"
+  nci_code: "C43395"
+  decode: Korean
+- code: "LAOTIAN"
+  nci_code: "C43397"
+  decode: Laotian
+- code: "LATIN AMERICAN INDIAN"
+  nci_code: "C209672"
+  decode: Latin American Indian
+- code: "LATIN AMERICAN"
+  nci_code: "C126531"
+  decode: Latin American
+- code: "LEBANESE"
+  nci_code: "C43871"
+  decode: Lebanese
+- code: "LIBERIAN"
+  nci_code: "C43832"
+  decode: Liberian
+- code: "MALAGASY"
+  nci_code: "C43722"
+  decode: Malagasy
+- code: "MALAYSIAN"
+  nci_code: "C43716"
+  decode: Malaysian
+- code: "MALDIVIAN"
+  nci_code: "C43719"
+  decode: Maldivian
+- code: "MAORI"
+  nci_code: "C158274"
+  decode: Maori
+- code: "MARSHALLESE"
+  nci_code: "C43839"
+  decode: Marshallese
+- code: "MAURITANIAN"
+  nci_code: "C209673"
+  decode: Mauritanian
+- code: "MEDITERRANEAN"
+  nci_code: "C77811"
+  decode: Mediterranean
+- code: "MELANESIAN"
+  nci_code: "C43409"
+  decode: Melanesian
+- code: "MICRONESIAN"
+  nci_code: "C43402"
+  decode: Micronesian
+- code: "MIDDLE EASTERN OR NORTH AFRICAN"
+  nci_code: "C43866"
+  decode: Middle Eastern or North African
+- code: "MIDDLE EASTERN"
+  nci_code: "C77820"
+  decode: Middle Eastern
+- code: "MONGOLIAN"
+  nci_code: "C43864"
+  decode: Mongolian
+- code: "MOROCCAN"
+  nci_code: "C205489"
+  decode: Moroccan
+- code: "NAMIBIAN"
+  nci_code: "C43833"
+  decode: Namibian
+- code: "NATIVE HAWAIIAN OR PACIFIC ISLANDER"
+  nci_code: "C41219"
+  decode: Native Hawaiian or Other Pacific Islander
+- code: "NATIVE HAWAIIAN"
+  nci_code: "C43394"
+  decode: Native Hawaiian
+- code: "NEPALESE"
+  nci_code: "C43720"
+  decode: Nepalese
+- code: "NIGERIAN"
+  nci_code: "C43834"
+  decode: Nigerian
+- code: "NORTH AFRICAN"
+  nci_code: "C77813"
+  decode: North Coast of Africa
+- code: "NORTHERN EUROPEAN"
+  nci_code: "C77814"
+  decode: Northern European
+- code: "NORWEGIAN"
+  nci_code: "C43862"
+  decode: Norwegian
+- code: "NOT REPORTED"
+  nci_code: "C43234"
+  decode: Not Reported
+- code: "OKINAWAN"
+  nci_code: "C43717"
+  decode: Okinawan
+- code: "OTHER PACIFIC ISLANDER"
+  nci_code: "C107602"
+  decode: Other Pacific Islander
+- code: "OTHER"
+  nci_code: "C17649"
+  decode: Other
+- code: "PAKISTANI"
+  nci_code: "C43427"
+  decode: Pakistani
+- code: "PALAUAN"
+  nci_code: "C43840"
+  decode: Palauan
+- code: "POLISH"
+  nci_code: "C43858"
+  decode: Polish
+- code: "POLYNESIAN"
+  nci_code: "C43405"
+  decode: Polynesian
+- code: "RUSSIAN"
+  nci_code: "C43860"
+  decode: Russian
+- code: "SALVADORAN"
+  nci_code: "C205485"
+  decode: Salvadoran
+- code: "SAMOAN"
+  nci_code: "C43407"
+  decode: Samoan
+- code: "SCOTTISH"
+  nci_code: "C43859"
+  decode: Scottish
+- code: "SIBERIAN ESKIMO"
+  nci_code: "C44269"
+  decode: Siberian Eskimo
+- code: "SINGAPOREAN"
+  nci_code: "C43721"
+  decode: Singaporean
+- code: "SOMALI"
+  nci_code: "C205482"
+  decode: Somali
+- code: "SOUTH AMERICAN INDIAN"
+  nci_code: "C44953"
+  decode: South American Indian
+- code: "SOUTH ASIAN"
+  nci_code: "C41263"
+  decode: South Asian
+- code: "SOUTHEAST ASIAN"
+  nci_code: "C126533"
+  decode: Southeast Asian
+- code: "SOUTHERN AFRICAN COLOURED"
+  nci_code: "C156583"
+  decode: Southern African Coloured
+- code: "SRI LANKAN"
+  nci_code: "C43672"
+  decode: Sri Lankan
+- code: "SUB-SAHARAN AFRICAN"
+  nci_code: "C153346"
+  decode: Sub-Saharan African
+- code: "SURINAMESE"
+  nci_code: "C209674"
+  decode: Surinamese
+- code: "SWEDISH"
+  nci_code: "C43861"
+  decode: Swedish
+- code: "SYRIAN"
+  nci_code: "C43873"
+  decode: Syrian
+- code: "TAHITIAN"
+  nci_code: "C43406"
+  decode: Tahitian
+- code: "TAIWANESE"
+  nci_code: "C43675"
+  decode: Taiwanese
+- code: "THAI"
+  nci_code: "C43400"
+  decode: Thai
+- code: "TOBAGOAN"
+  nci_code: "C43827"
+  decode: Tobagoan
+- code: "TONGAN"
+  nci_code: "C43408"
+  decode: Tongan
+- code: "TRINIDADIAN"
+  nci_code: "C43828"
+  decode: Trinidadian
+- code: "UNKNOWN"
+  nci_code: "C17998"
+  decode: Unknown
+- code: "VIETNAMESE"
+  nci_code: "C43396"
+  decode: Vietnamese
+- code: "WEST ASIAN"
+  nci_code: "C153343"
+  decode: Western Asian
+- code: "WEST INDIAN"
+  nci_code: "C43829"
+  decode: West Indian
+- code: "WESTERN EUROPEAN"
+  nci_code: "C77817"
+  decode: Western European
+- code: "WHITE CARIBBEAN"
+  nci_code: "C77816"
+  decode: White Caribbean
+- code: "WHITE CENTRAL AMERICAN"
+  nci_code: "C128993"
+  decode: White Central American
+- code: "WHITE SOUTH AMERICAN"
+  nci_code: "C128994"
+  decode: White South American
+- code: "WHITE"
+  nci_code: "C41261"
+  decode: White
+- code: "YEMENI"
+  nci_code: "C205490"
+  decode: Yemeni
+- code: "YUPIK ESKIMO"
+  nci_code: "C44270"
+  decode: Yupik Eskimo
+- code: "ZAIREAN"
+  nci_code: "C43835"
+  decode: Zairean
+nci_code: "C128689"
+extended: false

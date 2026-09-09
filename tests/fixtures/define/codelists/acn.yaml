@@ -1,0 +1,29 @@
+name: "ACN"
+label: Action Taken with Study Treatment
+type: text
+terms:
+- code: "DOSE INCREASED"
+  nci_code: "C49503"
+  decode: Dose Increased
+- code: "DOSE NOT CHANGED"
+  nci_code: "C49504"
+  decode: Dose Not Changed
+- code: "DOSE RATE REDUCED"
+  nci_code: "C150826"
+  decode: Dose Rate Reduced
+- code: "DOSE REDUCED"
+  nci_code: "C49505"
+  decode: Dose Reduced
+- code: "DRUG INTERRUPTED"
+  nci_code: "C49501"
+  decode: Drug Interrupted
+- code: "DRUG WITHDRAWN"
+  nci_code: "C49502"
+  decode: Drug Withdrawn
+- code: "NOT APPLICABLE"
+  nci_code: "C48660"
+  decode: Not Applicable
+- code: "UNKNOWN"
+  nci_code: "C17998"
+  decode: Unknown
+nci_code: "C66767"

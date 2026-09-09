@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standards Viewer</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/cdisc-viewer.css">
+</head>
+<body>
+<div id="cdisc-app" class="cdisc-app">
+  <header class="cdisc-header">
+    <h1>Standards Viewer</h1>
+  </header>
+
+  <section class="cdisc-panel">
+    <h2>NCI EVS Controlled Terminology</h2>
+    <p class="cdisc-panel-intro">
+      Published CDISC Controlled Terminology, straight from NCI EVS - the current release or any
+      archived quarterly version. Each is downloaded once and cached on disk; pick a version, then
+      browse its codelists.
+    </p>
+    <div id="cdisc-nci-evs-standards" class="cdisc-nci-evs-standards"></div>
+    <div id="cdisc-nci-evs-browser"></div>
+  </section>
+
+  <section class="cdisc-panel">
+    <h2>Local standards folder</h2>
+    <p class="cdisc-panel-intro">
+      A folder of CDISC CSV exports you maintain by hand (variable tables, CT term lists, CDASH, QRS
+      supplements). Drop new versions in as CDISC publishes them - this only reads what's there.
+    </p>
+    <div id="cdisc-standards-config"></div>
+    <div id="cdisc-standards-search"></div>
+    <div id="cdisc-standards-body"></div>
+  </section>
+</div>
+<script src="/static/cdisc-viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+name: Release
+
+on:
+  release:
+    types: [published]      # publish a GitHub Release -> build + attach every asset
+  workflow_dispatch: {}      # dry build: every binary, published nowhere
+
+permissions:
+  contents: write
+
+env:
+  NFPM_VERSION: "2.41.3"
+  PYTHON_VERSION: "3.12"
+  WIX_VERSION: "5.0.2"
+
+jobs:
+  # Version strings, shared by every downstream job.
+  #   version      - e.g. 0.1.0 (release tag without the leading v; 0.0.0 on a dry run)
+  #   msi_version  - strictly numeric a.b.c[.d] for MSI ProductVersion (suffix stripped)
+  meta:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      msi_version: ${{ steps.v.outputs.msi_version }}
+      publish: ${{ github.event_name == 'release' }}
+    steps:
+      - id: v
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            raw="${GITHUB_REF_NAME#v}"
+          else
+            raw="0.0.0"
+          fi
+          msi="${raw%%-*}"; msi="${msi%%+*}"
+          [[ "$msi" =~ ^[0-9]+(\.[0-9]+){1,3}$ ]] || msi="0.0.0"
+          echo "version=$raw" >> "$GITHUB_OUTPUT"
+          echo "msi_version=$msi" >> "$GITHUB_OUTPUT"
+
+  # --------------------------------------------------------------------------
+  # Linux (glibc) - x86_64 + aarch64. One portable .tar.gz, one .deb that
+  # installs on Debian and Ubuntu alike, one pacman package. Built in an
+  # old-ish Debian so the binary also runs on older glibc; a newer glibc
+  # (Arch, recent Ubuntu) runs it fine - glibc is backward compatible.
+  # --------------------------------------------------------------------------
+  linux:
+    needs: meta
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { arch: x86_64, nfpm_arch: amd64, runner: ubuntu-latest }
+          - { arch: aarch64, nfpm_arch: arm64, runner: ubuntu-24.04-arm } # free on public repos
+    runs-on: ${{ matrix.runner }}
+    container: debian:12
+    steps:
+      - name: System deps
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            git curl ca-certificates binutils xz-utils zstd
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0        # tags -> hatch-vcs version
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
+      - run: uv sync --all-extras --python "${PYTHON_VERSION}"
+      - name: Build binary
+        run: |
+          uv run pyinstaller packaging/define.spec
+          ./dist/define --help
+      - name: Stage tarball
+        run: |
+          mkdir -p out
+          cp dist/define LICENSE README.md XMLYAML.md LOCALCT.md CLI.md SETUP.md out/
+          tar czf "define-linux-${{ matrix.arch }}.tar.gz" -C out .
+      - name: Install nfpm
+        run: |
+          curl -fsSL -o /tmp/nfpm.deb \
+            "https://github.com/goreleaser/nfpm/releases/download/v${NFPM_VERSION}/nfpm_${NFPM_VERSION}_${{ matrix.nfpm_arch }}.deb"
+          apt-get install -y /tmp/nfpm.deb
+      - name: Build .deb + pacman package
+        env:
+          VERSION: ${{ needs.meta.outputs.version }}
+          ARCH: ${{ matrix.nfpm_arch }}
+        run: |
+          mkdir -p pkg
+          nfpm package -f packaging/nfpm.yaml -p deb -t pkg/
+          nfpm package -f packaging/nfpm.yaml -p archlinux -t pkg/
+          ls -la pkg
+      - uses: actions/upload-artifact@v5
+        with:
+          name: linux-${{ matrix.arch }}
+          path: |
+            define-linux-${{ matrix.arch }}.tar.gz
+            pkg/*
+
+  # --------------------------------------------------------------------------
+  # macOS - arm64 (macos-14) and x86_64 (macos-13). Unsigned: recipients run
+  # `xattr -dr com.apple.quarantine ./define` on a downloaded copy.
+  # --------------------------------------------------------------------------
+  macos:
+    needs: meta
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { arch: arm64, runner: macos-14 }
+#          - { arch: x86_64, runner: macos-13 } # disable - GitHub Actions macOS runners are slow and expensive, and we don't have a real need to test x86_64 anymore.
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0        # tags -> hatch-vcs version
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: uv sync --all-extras
+      - name: Build binary
+        run: |
+          uv run pyinstaller packaging/define.spec
+          ./dist/define --help
+      - name: Stage tarball
+        run: |
+          mkdir -p out && cp dist/define LICENSE README.md out/
+          tar czf "define-macos-${{ matrix.arch }}.tar.gz" -C out .
+      - uses: actions/upload-artifact@v5
+        with:
+          name: macos-${{ matrix.arch }}
+          path: define-macos-${{ matrix.arch }}.tar.gz
+
+  # --------------------------------------------------------------------------
+  # Windows x86_64 - a standalone define.exe (zipped) and a WiX MSI installer
+  # (installs to %ProgramFiles%\DefineYAML, adds it to the system PATH).
+  # --------------------------------------------------------------------------
+  windows:
+    needs: meta
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0        # tags -> hatch-vcs version
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: uv sync --all-extras
+      - name: Build binary
+        run: |
+          uv run pyinstaller packaging/define.spec
+          .\dist\define.exe --help
+      - name: Stage standalone zip
+        run: |
+          New-Item -ItemType Directory -Force out | Out-Null
+          Copy-Item -Path dist\define.exe, LICENSE, README.md -Destination out\
+          Compress-Archive -Path out\* -DestinationPath define-windows-x86_64.zip
+      - name: Build MSI (WiX)
+        run: |
+          dotnet tool install --global wix --version $env:WIX_VERSION
+          $env:PATH += ";$env:USERPROFILE\.dotnet\tools"
+          wix --version
+          wix build packaging\windows\define.wxs `
+            -arch x64 `
+            -d Version=${{ needs.meta.outputs.msi_version }} `
+            -d ExePath=dist\define.exe `
+            -o "DefineYAML-${{ needs.meta.outputs.version }}-x64.msi"
+      - uses: actions/upload-artifact@v5
+        with:
+          name: windows-x86_64
+          path: |
+            define-windows-x86_64.zip
+            DefineYAML-*.msi
+
+  # --------------------------------------------------------------------------
+  # Gather every artifact, checksum, attach to the published GitHub Release.
+  # Skipped on a workflow_dispatch dry run.
+  # --------------------------------------------------------------------------
+  release:
+    needs: [meta, linux, macos, windows]
+    if: needs.meta.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v5
+        with:
+          path: artifacts
+      - name: Flatten + checksums
+        run: |
+          mkdir -p release
+          find artifacts -type f \( -name '*.tar.gz' -o -name '*.zip' -o -name '*.deb' \
+            -o -name '*.pkg.tar.zst' -o -name '*.msi' \) -exec cp {} release/ \;
+          cd release && sha256sum * | tee SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release/*
+          fail_on_unmatched_files: true

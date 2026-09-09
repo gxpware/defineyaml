@@ -1,0 +1,29 @@
+odm:
+  file_oid: "STUDY-001.DEFINE"
+  creation_datetime: "2026-09-04T00:00:00"
+  originator: Wild Badgers & Raccoons Biopharma
+  source_system: defineyaml
+  source_system_version: "0.1.0"
+
+study:
+  oid: "STUDY-001"
+  name: "Example Study 002"
+  description: A Phase 3 study of Drug X in Condition Y
+  protocol_name: "PROTO-001"
+
+metadata_version:
+  oid: "MDV.STUDY-001.ADAM"
+  name: "Study 001 Analysis Data Model"
+  description: Define-XML for the ADaM datasets supporting the CSR
+  define_version: "2.1.0"
+
+expression_contexts:
+- SAS 9.4
+- R 4.4
+dataset_order:
+- ADSL
+- ADCM
+- ADAE
+- ADLB
+- ADPR
+- DM

@@ -1,0 +1,6 @@
+name: "studyid"
+label: 'Study ID'
+type: text
+terms:
+- code: "XXX-21"
+extended: true

@@ -1,0 +1,4 @@
+description: |
+  USUBJID is constructed as STUDYID concatenated with SUBJID, per the
+  sponsor's global subject identifier convention (see ADRG s3.1).
+documents: []

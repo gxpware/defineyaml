@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MSI installer for the DefineYAML CLI.
+
+  Wraps the single self-contained PyInstaller `define.exe`: installs it to
+  "%ProgramFiles%\DefineYAML", adds that directory to the system PATH, and
+  registers an Add/Remove Programs entry. No Python or other runtime needed.
+
+  Built by .github/workflows/release.yml, which installs the "wix" dotnet tool
+  and runs "wix build" with -arch x64 and two preprocessor defines:
+    Version  = strictly numeric MSI ProductVersion (a.b.c), suffix stripped
+    ExePath  = path to the freshly built dist\define.exe
+
+  Install:    msiexec /i DefineYAML-<version>-x64.msi   (double-click works too; UAC prompt)
+  Uninstall:  msiexec /x DefineYAML-<version>-x64.msi
+
+  UpgradeCode is permanent. Never change it, or in-place upgrades stop working.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Name="DefineYAML"
+      Manufacturer="DefineYAML"
+      Version="$(Version)"
+      UpgradeCode="e4b48fcf-c9f0-4b3f-9e81-f1d149fcf7ce"
+      Scope="perMachine"
+      Compressed="yes">
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/gxpware/defineyaml" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="DefineYAML">
+        <Component Id="DefineExe" Bitness="always64">
+          <File Id="DefineExe" Source="$(ExePath)" Name="define.exe" KeyPath="yes" />
+          <Environment Id="AddToPath" Name="PATH" Value="[INSTALLFOLDER]"
+                       Action="set" Part="last" System="yes" Permanent="no" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="Main" Title="DefineYAML">
+      <ComponentRef Id="DefineExe" />
+    </Feature>
+  </Package>
+</Wix>

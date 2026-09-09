@@ -1,0 +1,8 @@
+name: "NY_Y_only"
+label: No Yes Response
+type: text
+terms:
+- code: "Y"
+  nci_code: "C49488"
+  decode: Yes
+nci_code: "C66742"

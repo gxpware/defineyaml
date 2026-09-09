@@ -1,0 +1,14 @@
+name: "DATEFL"
+label: Date Imputation Flag
+type: text
+terms:
+- code: "D"
+  nci_code: "C81212"
+  decode: Day Imputed
+- code: "M"
+  nci_code: "C81211"
+  decode: Month Day Imputed
+- code: "Y"
+  nci_code: "C81210"
+  decode: Year Month Day Imputed
+nci_code: "C81223"
